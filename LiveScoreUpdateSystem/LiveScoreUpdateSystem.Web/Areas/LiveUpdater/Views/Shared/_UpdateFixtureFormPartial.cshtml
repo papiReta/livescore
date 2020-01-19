@@ -1,0 +1,40 @@
+﻿@using LiveScoreUpdateSystem.Web.Areas.LiveUpdater.Controllers;
+@using LiveScoreUpdateSystem.Web.Areas.LiveUpdater.Models;
+
+@model UpdateFixtureViewModel
+
+<div id="update-fixture-modal" data-fixture-id="@Model.Id" data-scoring-team-name="@Model.TeamName"  class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        @using (Html.BeginForm<UpdateFixtureController>(c => c.UpdateFixtureEvent(Model.Id, null), FormMethod.Post, null, new { id="update-fixture-id"}))
+        {
+            <div class="modal-content" id="modal-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Fixture</h4>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <div><strong>Involved Player</strong></div>
+                    @Html.DropDownListFor(m => m.PlayerId, Model.Players, new { @class = "form-control" })
+
+                    <br />
+                    <div><strong>Fixture Event</strong></div>
+                    @Html.EnumDropDownListFor(m => m.FixtureEvent, new { @class = "form-control" })
+
+                    <br />
+                    <div><strong>Minute</strong></div>
+                    @Html.EditorFor(m => m.Minute, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+
+                    @Html.AntiForgeryToken()
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-submit-form" class="btn btn-primary btn-update-fixture" type="button">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $('#update-fixture-modal').modal('show');
+</script>

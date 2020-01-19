@@ -1,0 +1,91 @@
+﻿@using LiveScoreUpdateSystem.Common;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveScore</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Kendo-css")
+    @Styles.Render("~/Content/template-css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="header">
+    <div class="header-top">
+        <div class="container">
+            <p class="header-para">Live Scores And Updates in realtime</p>
+            <ul class="sign">
+                @Html.Partial("_LoginPartial")
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <div class="header-bottom-top">
+        <div class="container">
+            <div class="search">
+                @(Html.Kendo()
+                    .DatePicker()
+                    .Name("DatePicker")
+                    .Deferred()
+                    .HtmlAttributes(new { value = DateTime.Now })
+                    .Format("dd/mm/yyyy"));
+            </div>
+            <div class="clearfix"> </div>
+            <div class="header-bottom">
+                <div class="logo">
+                    <a href="@(Url.Action<LiveScoreUpdateSystem.Web.Controllers.HomeController>(c => c.Index()))">
+                        <img src="~/Content/Images/log.png" alt=" " />
+                        <img id="app-logo" src="~/Content/images/app-logo.png" />
+                    </a>
+                </div>
+                <div class="top-nav">
+                    <span class="menu"> </span>
+                    <ul>
+                        <li>@(Html.ActionLink("Home", (LiveScoreUpdateSystem.Web.Controllers.HomeController c) => c.Index()))</li>
+                        <li>@(Html.ActionLink("Scores", (LiveScoreUpdateSystem.Web.Controllers.ScoresController c) => c.AvailableScores()))</li>
+                        <li>@(Html.ActionLink("Teams", (LiveScoreUpdateSystem.Web.Controllers.TeamsController c) => c.TeamsList(1, 20)))</li>
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <li>@(Html.ActionLink("Subscriptions", (LiveScoreUpdateSystem.Web.Controllers.SubscriptionsController c) => c.Index()))</li>
+                        }
+                        <li>@(Html.ActionLink("About", (LiveScoreUpdateSystem.Web.Controllers.HomeController c) => c.About()))</li>
+                        <li>@(Html.ActionLink("Contact", (LiveScoreUpdateSystem.Web.Controllers.HomeController c) => c.Contact()))</li>
+                    </ul>
+                    <!--script-->
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+    <hr />
+    <footer class="container body-content">
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/template")
+
+    @Html.Kendo().DeferredScripts()
+    @RenderSection("scripts", required: false)
+
+    @if (TempData[GlobalConstants.SuccessMessage] != null)
+    {
+        <script>
+            toastr.options.closeOnHover = true;
+            toastr.success("@TempData[GlobalConstants.SuccessMessage]")
+        </script>
+    }
+    else if (TempData[GlobalConstants.ErrorMessage] != null)
+    {
+        <script>
+            toastr.error("@TempData[GlobalConstants.ErrorMessage]")
+        </script>
+    }
+</body>
+</html>

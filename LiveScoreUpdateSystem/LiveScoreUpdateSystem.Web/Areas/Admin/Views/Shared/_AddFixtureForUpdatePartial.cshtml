@@ -1,0 +1,24 @@
+﻿@model IEnumerable<string>
+
+<div>League</div>
+<select id="leagues-dropdown" class="form-control">
+    @foreach (var teamName in Model)
+    {
+        <option>@teamName</option>
+    }
+</select>
+
+<div id="form-container">
+
+</div>
+
+<script>
+    $('#leagues-dropdown').on('change', (ev) => {
+        const leagueName = $(ev.target).val();
+        const url = '/admin/fixtures/addfixtureform?leaguename=' + leagueName;
+
+        $.get(url, (data) => {
+            $('#form-container').html(data);
+        })
+    });
+</script>

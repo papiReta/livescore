@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@(Html.Action<HomeController>(c => c.HomePage()))
+
+@section Scripts{
+    <script>
+                        // You can also use "$(window).load(function() {"
+                        $(function () {
+                            $("#slider2").responsiveSlides({
+                                auto: true,
+                                pager: true,
+                                speed: 300,
+                                namespace: "callbacks",
+                            });
+                        });
+    </script>
+}

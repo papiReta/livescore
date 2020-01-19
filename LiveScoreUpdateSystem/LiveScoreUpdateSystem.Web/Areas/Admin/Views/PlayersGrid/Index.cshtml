@@ -1,0 +1,61 @@
+﻿@using LiveScoreUpdateSystem.Web.Areas.Admin.Models
+
+<div class="container body-content">
+
+    <h1><i class="fa fa-linux fa-3x" aria-hidden="true"></i>Players Grid</h1>
+
+    @(Html.Kendo()
+        .Grid<GridPlayerViewModel>()
+        .Name("PlayersGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(m => m.PictureUrl).ClientTemplate(
+                     @"<div class='grid-photo'
+                        style='background-image: url(#:data.PictureUrl#);'></div>"
+                ).Width(50);
+            columns.Bound(m => m.FirstName).Width(80);
+            columns.Bound(m => m.LastName).Width(80);
+            columns.Bound(m => m.Age).Width(80);
+            columns.Bound(m => m.Position).Width(80);
+            columns.Bound(m => m.ShirtNumber).Width(80);
+            columns.Bound(m => m.TeamName).ClientTemplate(
+                 @"<div class='grid-photo'
+                       style='background-image: url(#:data.TeamLogoUrl#);'></div>
+                    <div class='grid-name'>#: data.TeamName #</div>"
+            ).Width(80);
+            columns.Bound(m => m.TeamName).ClientTemplate("#=TeamName#");
+            columns.Bound(m => m.CountryName).ClientTemplate(
+                  @"<div class='grid-photo'
+                       style='background-image: url(#:data.CountryFlagUrl#);'></div>
+                    <div class='grid-name'>#: data.CountryName #</div>"
+             ).Width(50);
+            columns.Command(command => { command.Edit(); command.Destroy(); }).Width(250);
+        })
+        .Editable(editable =>
+        {
+            editable.Mode(GridEditMode.InLine);
+        })
+        .Scrollable()
+        .Pageable(c =>
+        {
+            c.Refresh(true);
+            c.PageSizes(true);
+        })
+        .Sortable()
+        .DataSource(source =>
+        {
+            source.Ajax()
+            .Model(m =>
+            {
+                m.Id(c => c.Id);
+                m.Field(model => model.TeamName).Editable(false);
+                m.Field(model => model.CountryName).Editable(false);
+            })
+            .Read(c => c.Action("ReadPlayers", "PlayersGrid")).PageSize(GlobalConstants.GridsPageSize)
+            .Destroy(c => c.Action("DeletePlayer", "PlayersGrid"))
+            .Update(c => c.Action("EditPlayer", "PlayersGrid"));
+        })
+        .Filterable(f => f.Mode(GridFilterMode.Menu))
+        .Deferred())
+
+</div>

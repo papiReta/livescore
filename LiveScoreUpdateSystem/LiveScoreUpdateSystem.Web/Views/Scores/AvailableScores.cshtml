@@ -1,0 +1,31 @@
+﻿@model DateTime
+
+<div class="container body-content col-md-offset-3">
+    <div class="content_in content_in_s">
+        <div class="live_navigation clearfix" style="margin-top: 10px;">
+            <div class="calendar_wrap clearfix">
+                <span id="date">
+                    @(Html
+                      .Kendo()
+                      .DatePicker()
+                      .Name("ScoresDate")
+                      .Deferred()
+                      .HtmlAttributes(new { id = "scores-date", value = Model })
+                      .Format("dd/mm/yyyy"))
+                </span>
+            </div>
+        </div>
+
+        <div class="matches_list_wrap">
+            @(Html.Action<ScoresController>(c => c.ByDate(Model)))
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="@Url.Content("/Scripts/LiveScore/scores-by-date.js")"></script>
+    @Scripts.Render("~/bundles/signalR");
+    <script src="/signalr/hubs"></script>
+    <script src="@Url.Content("~/Scripts/LiveScore/scores-timer.js")"></script>
+    <script src="@Url.Content("~/Scripts/LiveScore/update-scores.js")"></script>
+}

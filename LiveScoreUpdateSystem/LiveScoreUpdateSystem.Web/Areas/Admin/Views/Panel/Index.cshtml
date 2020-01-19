@@ -1,0 +1,122 @@
+﻿@using LiveScoreUpdateSystem.Web.Areas.Admin.Controllers
+
+<div class="container body-content">
+
+    <h1>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        LiveScore System
+    </h1>
+
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading template-green">
+                            <h3 class="panel-title"><span class="glyphicon glyphicon-thumbs-up"></span> Admin Dashboard</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4>Adding Data</h4>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="btn btn-primary"
+                                       data-ajax="true"
+                                       data-ajax-mode="replace"
+                                       data-ajax-success="showModal('#add-form-modal', 'Add Country')"
+                                       data-ajax-update="#modal-body"
+                                       href="@(Url.Action<PanelController>(c => c.AddCountry()))">
+                                        <span class="fa fa-globe fa-3x"></span> <br />Add <span class="glyphicon glyphicon-plus green"></span><br />Country
+                                    </a>
+                                    <a class="btn btn-primary"
+                                       data-ajax="true"
+                                       data-ajax-mode="replace"
+                                       data-ajax-success="showModal('#add-form-modal', 'Add League')"
+                                       data-ajax-update="#modal-body"
+                                       href="@(Url.Action<PanelController>(c => c.AddLeague()))">
+                                        <span class="fa fa-star fa-3x"></span> <br />Add <span class="glyphicon glyphicon-plus green"></span><br />League
+                                    </a>
+                                    <a class="btn btn-primary"
+                                       data-ajax="true"
+                                       data-ajax-mode="replace"
+                                       data-ajax-success="showModal('#add-form-modal', 'Add Team')"
+                                       data-ajax-update="#modal-body"
+                                       href="@(Url.Action<PanelController>(c => c.AddTeam()))">
+                                        <span class="fa fa-users fa-3x"></span> <br />Add <span class="glyphicon glyphicon-plus green"></span><br />Team
+                                    </a>
+
+                                    <a class="btn btn-primary"
+                                       data-ajax="true"
+                                       data-ajax-mode="replace"
+                                       data-ajax-success="showModal('#add-form-modal', 'Add Player')"
+                                       data-ajax-update="#modal-body"
+                                       href="@(Url.Action<PanelController>(c => c.AddPlayer()))">
+                                        <span class="fa fa-linux fa-3x"></span> <br />Add <span class="glyphicon glyphicon-plus green"></span><br />Player
+                                    </a>
+                                </div>
+                            </div>
+
+                            <h4>Data Management</h4>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="btn btn-warning" href=@(Url.Action<CountriesGridController>(c => c.Index()))>
+                                        <span class="fa fa-globe fa-3x"></span> <br />View <i class="glyphicon glyphicon-info-sign"></i><br />Countries
+                                    </a>
+                                    <a class="btn btn-warning" href=@(Url.Action<LeaguesGridController>(c => c.Index()))>
+                                        <span class="fa fa-star fa-3x"></span> <br />View <i class="glyphicon glyphicon-info-sign"></i><br />Leagues
+                                    </a>
+                                    <a class="btn btn-warning" href=@(Url.Action<TeamsGridController>(c => c.Index()))>
+                                        <span class="fa fa-users fa-3x"></span> <br />View <i class="glyphicon glyphicon-info-sign"></i><br />Teams
+                                    </a>
+                                    <a class="btn btn-warning" href=@(Url.Action<PlayersGridController>(c => c.Index()))>
+                                        <span class="fa fa-linux fa-3x"></span> <br />View <i class="glyphicon glyphicon-info-sign"></i><br />Players
+                                    </a>
+                                </div>
+                            </div>
+
+                            <h4>Fixtures</h4>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a class="btn btn-danger"
+                                       data-ajax="true"
+                                       data-ajax-mode="replace"
+                                       data-ajax-success="showModal('#add-form-modal', 'Add Fixture For Updating')"
+                                       data-ajax-update="#modal-body" href="@(Url.Action<FixturesController>(c => c.AddFixture()))">
+                                        <span class="fa fa-bolt fa-3x"></span> <br />Add <i class="glyphicon glyphicon-plus"></i><br />Fixture
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="panel-footer template-green">
+                                <div class="pull-left">Manage the live score system from here</div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="add-form-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modal-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Content</h4>
+                </div>
+                <div class="modal-body" id="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-submit-form" class="btn btn-primary">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/modals")
+}

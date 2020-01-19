@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1567F6EE-13DD-4F0A-834F-04D5DF7BCC94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LiveScoreUpdateSystem.Data</RootNamespace>
+    <AssemblyName>LivesScoreUpdateSystem.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bytes2you.Validation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a7d501dd757e0442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bytes2you.Validation.2.0.0.0\lib\portable-win+net40+sl40+wp+Xbox40\Bytes2you.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomExceptions\FormattedDbEntityValidationException.cs" />
+    <Compile Include="Migrations\201710021515545_Initial.cs" />
+    <Compile Include="Migrations\201710021515545_Initial.Designer.cs">
+      <DependentUpon>201710021515545_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710041539106_AddedFixturesModelsToDbContext.cs" />
+    <Compile Include="Migrations\201710041539106_AddedFixturesModelsToDbContext.Designer.cs">
+      <DependentUpon>201710041539106_AddedFixturesModelsToDbContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710061305563_AddedLogoUrlToTeamModel.cs" />
+    <Compile Include="Migrations\201710061305563_AddedLogoUrlToTeamModel.Designer.cs">
+      <DependentUpon>201710061305563_AddedLogoUrlToTeamModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710081733258_RemoveRequiredAttributeFromLeague%27sCountry.cs" />
+    <Compile Include="Migrations\201710081733258_RemoveRequiredAttributeFromLeague%27sCountry.Designer.cs">
+      <DependentUpon>201710081733258_RemoveRequiredAttributeFromLeague%27sCountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710082257021_RemovedRequiredAttributeFromTeamsLeagueProperty.cs" />
+    <Compile Include="Migrations\201710082257021_RemovedRequiredAttributeFromTeamsLeagueProperty.Designer.cs">
+      <DependentUpon>201710082257021_RemovedRequiredAttributeFromTeamsLeagueProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710090928347_MarkedPlayerModelsCountryAsNonMandatory.cs" />
+    <Compile Include="Migrations\201710090928347_MarkedPlayerModelsCountryAsNonMandatory.Designer.cs">
+      <DependentUpon>201710090928347_MarkedPlayerModelsCountryAsNonMandatory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710102244169_AddedStartTimeAndStartingPlayersProperties.cs" />
+    <Compile Include="Migrations\201710102244169_AddedStartTimeAndStartingPlayersProperties.Designer.cs">
+      <DependentUpon>201710102244169_AddedStartTimeAndStartingPlayersProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710110101308_ChangedAllDateTimeTypesToDateTime2.cs" />
+    <Compile Include="Migrations\201710110101308_ChangedAllDateTimeTypesToDateTime2.Designer.cs">
+      <DependentUpon>201710110101308_ChangedAllDateTimeTypesToDateTime2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710131418189_AddedScoreAtTheTimeOfEventPropertryToFixtureEventModel.cs" />
+    <Compile Include="Migrations\201710131418189_AddedScoreAtTheTimeOfEventPropertryToFixtureEventModel.Designer.cs">
+      <DependentUpon>201710131418189_AddedScoreAtTheTimeOfEventPropertryToFixtureEventModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710132125198_RemoveSeasonPointsPropertyFromTeamModel.cs" />
+    <Compile Include="Migrations\201710132125198_RemoveSeasonPointsPropertyFromTeamModel.Designer.cs">
+      <DependentUpon>201710132125198_RemoveSeasonPointsPropertyFromTeamModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710132130014_AddedSubscriptionPropertyToUsers.cs" />
+    <Compile Include="Migrations\201710132130014_AddedSubscriptionPropertyToUsers.Designer.cs">
+      <DependentUpon>201710132130014_AddedSubscriptionPropertyToUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710132146271_AddedSbisribersPropertyToTeamModel.cs" />
+    <Compile Include="Migrations\201710132146271_AddedSbisribersPropertyToTeamModel.Designer.cs">
+      <DependentUpon>201710132146271_AddedSbisribersPropertyToTeamModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710141220072_AddedPictureUrlPropertyToFixtureEventModel.cs" />
+    <Compile Include="Migrations\201710141220072_AddedPictureUrlPropertyToFixtureEventModel.Designer.cs">
+      <DependentUpon>201710141220072_AddedPictureUrlPropertyToFixtureEventModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MsSqlDbContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EfRepository.cs" />
+    <Compile Include="Repositories\Contracts\IEfRepository.cs" />
+    <Compile Include="SaveContext\Contracts\ISaveContext.cs" />
+    <Compile Include="SaveContext\SaveContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiveScoreUpdateSystem.Common\LiveScoreUpdateSystem.Common.csproj">
+      <Project>{5B1B3DB7-18F5-4701-B952-9F1C2CE517F8}</Project>
+      <Name>LiveScoreUpdateSystem.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LiveScoreUpdateSystem.Data.Models\LiveScoreUpdateSystem.Data.Models.csproj">
+      <Project>{115C0FE9-4CBC-43C3-8898-A7CC42B2A2F4}</Project>
+      <Name>LiveScoreUpdateSystem.Data.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710021515545_Initial.resx">
+      <DependentUpon>201710021515545_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710041539106_AddedFixturesModelsToDbContext.resx">
+      <DependentUpon>201710041539106_AddedFixturesModelsToDbContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710061305563_AddedLogoUrlToTeamModel.resx">
+      <DependentUpon>201710061305563_AddedLogoUrlToTeamModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710081733258_RemoveRequiredAttributeFromLeague%27sCountry.resx">
+      <DependentUpon>201710081733258_RemoveRequiredAttributeFromLeague%27sCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710082257021_RemovedRequiredAttributeFromTeamsLeagueProperty.resx">
+      <DependentUpon>201710082257021_RemovedRequiredAttributeFromTeamsLeagueProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090928347_MarkedPlayerModelsCountryAsNonMandatory.resx">
+      <DependentUpon>201710090928347_MarkedPlayerModelsCountryAsNonMandatory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710102244169_AddedStartTimeAndStartingPlayersProperties.resx">
+      <DependentUpon>201710102244169_AddedStartTimeAndStartingPlayersProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710110101308_ChangedAllDateTimeTypesToDateTime2.resx">
+      <DependentUpon>201710110101308_ChangedAllDateTimeTypesToDateTime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131418189_AddedScoreAtTheTimeOfEventPropertryToFixtureEventModel.resx">
+      <DependentUpon>201710131418189_AddedScoreAtTheTimeOfEventPropertryToFixtureEventModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710132125198_RemoveSeasonPointsPropertyFromTeamModel.resx">
+      <DependentUpon>201710132125198_RemoveSeasonPointsPropertyFromTeamModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710132130014_AddedSubscriptionPropertyToUsers.resx">
+      <DependentUpon>201710132130014_AddedSubscriptionPropertyToUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710132146271_AddedSbisribersPropertyToTeamModel.resx">
+      <DependentUpon>201710132146271_AddedSbisribersPropertyToTeamModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710141220072_AddedPictureUrlPropertyToFixtureEventModel.resx">
+      <DependentUpon>201710141220072_AddedPictureUrlPropertyToFixtureEventModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
